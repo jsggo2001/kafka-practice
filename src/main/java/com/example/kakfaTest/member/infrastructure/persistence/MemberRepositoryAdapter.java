@@ -14,7 +14,10 @@ public class MemberRepositoryAdapter implements MemberRepository {
 
     @Override
     public Member save(Member member) {
-        return jpaMemberRepository.save(member);
+
+        Member savedMember = jpaMemberRepository.save(member);
+
+        return savedMember;
     }
 
 }

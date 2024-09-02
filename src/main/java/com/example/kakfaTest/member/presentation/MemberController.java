@@ -24,11 +24,11 @@ public class MemberController {
 
     //회원가입
     @PostMapping("/join")
-    public ResponseEntity<Long> test(
+    public ResponseEntity<String> test(
             @Valid @RequestBody MemberJoinRequest memberJoinRequest) throws Exception {
 
         MemberJoinResponse result = MemberJoinResponse.from(
-                memberFacade.create(memberJoinRequest.toCommand()).getId()
+                memberFacade.create(memberJoinRequest.toCommand()).getLoginId()
         );
 
         return new ResponseEntity<>(result.getMemberId(), HttpStatus.CREATED);

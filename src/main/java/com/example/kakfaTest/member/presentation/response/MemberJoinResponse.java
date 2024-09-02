@@ -7,10 +7,10 @@ import lombok.Getter;
 @AllArgsConstructor
 public class MemberJoinResponse {
 
-    private Long memberId;
+    private String memberId;
 
-    public static MemberJoinResponse from(Long memberId) {
-        MemberJoinResponse response = new MemberJoinResponse(memberId);
+    public static MemberJoinResponse from(String loginId) {
+        MemberJoinResponse response = new MemberJoinResponse(loginId);
         return response;
     }
 
