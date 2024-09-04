@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 public class MemberConfig {
 
     @Bean
-    public CreateMemberProcessor createMemberProcessor(@Qualifier("jpaMemberRepository") MemberRepository memberRepository) {
+//    public CreateMemberProcessor createMemberProcessor(@Qualifier("jpaMemberRepository") MemberRepository memberRepository) {
+    public CreateMemberProcessor createMemberProcessor(@Qualifier("kafkaMemberRepository") MemberRepository memberRepository) {
         return new CreateMemberProcessor(memberRepository);
     }
-
 }

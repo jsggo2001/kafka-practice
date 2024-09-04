@@ -19,5 +19,4 @@ public class MemberRepositoryAdapter implements MemberRepository {
 
         return savedMember;
     }
-
 }
