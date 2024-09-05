@@ -21,7 +21,7 @@ public class MemberSelectResponse {
 
     private LocalDateTime createTime;
 
-    private Timestamp updateTime;
+    private LocalDateTime updateTime;
 
     public static MemberSelectResponse from(Member member) {
         return new MemberSelectResponse(
@@ -30,7 +30,7 @@ public class MemberSelectResponse {
                 member.getPwd(),
                 member.getName(),
                 member.getCreateTime(),
-                member.getUpdateTime()
+                member.getUpdateTime().toLocalDateTime()
         );
     }
 }

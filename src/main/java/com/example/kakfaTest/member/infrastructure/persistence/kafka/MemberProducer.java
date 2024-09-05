@@ -13,6 +13,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -42,8 +44,10 @@ public class MemberProducer {
 
     public Member saveProduce(Member member) {
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String formattedDate = dateFormat.format(member.getUpdateTime());
+        LocalDateTime dateTime = member.getUpdateTime().toLocalDateTime();
+
+        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+        String formattedDate = dateFormat.format(dateTime);
 
         Payload payload = Payload.builder()
                 .login_id(member.getLoginId())
