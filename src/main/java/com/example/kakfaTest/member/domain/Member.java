@@ -27,8 +27,10 @@ public class Member {
 
     private String name;
 
+    @Column(columnDefinition = "datetime(0)")
     private LocalDateTime createTime;
 
+    @Column(columnDefinition = "datetime(0)")
     private Timestamp updateTime;
 
     Member(String loginId, String pwd, String name, LocalDateTime createTime, Timestamp updateTime) {
@@ -38,7 +40,6 @@ public class Member {
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
-
 
     public static Member create(
             String loginId,

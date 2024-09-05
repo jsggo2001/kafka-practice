@@ -1,7 +1,8 @@
 package com.example.kakfaTest.member.infrastructure.config;
 
 import com.example.kakfaTest.member.domain.repository.MemberRepository;
-import com.example.kakfaTest.member.infrastructure.persistence.KafkaMemberProducerAdapter;
+import com.example.kakfaTest.member.infrastructure.persistence.CombineMemberProducerAdapter;
+//import com.example.kakfaTest.member.infrastructure.persistence.KafkaMemberProducerAdapter;
 import com.example.kakfaTest.member.infrastructure.persistence.MemberRepositoryAdapter;
 import com.example.kakfaTest.member.infrastructure.persistence.jpa.JpaMemberRepository;
 import com.example.kakfaTest.member.infrastructure.persistence.kafka.MemberProducer;
@@ -18,9 +19,14 @@ public class MemberRepositoryConfig {
         return new MemberRepositoryAdapter(jpaMemberRepository);
     }
 
+//    @Bean
+//    @Qualifier("kafkaMemberRepository")
+//    public MemberRepository kafkaMemberRepository(MemberProducer memberProducer) {
+//        return new KafkaMemberProducerAdapter(memberProducer);
+//    }
     @Bean
-    @Qualifier("kafkaMemberRepository")
-    public MemberRepository kafkaMemberRepository(MemberProducer memberProducer) {
-        return new KafkaMemberProducerAdapter(memberProducer);
+    @Qualifier("combineMemberRepository")
+    public MemberRepository CombineMemberRepository(JpaMemberRepository jpaMemberRepository, MemberProducer memberProducer) {
+        return new CombineMemberProducerAdapter(jpaMemberRepository, memberProducer);
     }
 }

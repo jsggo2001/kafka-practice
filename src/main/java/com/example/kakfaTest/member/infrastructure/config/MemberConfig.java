@@ -11,7 +11,7 @@ public class MemberConfig {
 
     @Bean
 //    public CreateMemberProcessor createMemberProcessor(@Qualifier("jpaMemberRepository") MemberRepository memberRepository) {
-    public CreateMemberProcessor createMemberProcessor(@Qualifier("kafkaMemberRepository") MemberRepository memberRepository) {
+    public CreateMemberProcessor createMemberProcessor(@Qualifier("combineMemberRepository") MemberRepository memberRepository) {
         return new CreateMemberProcessor(memberRepository);
     }
 }

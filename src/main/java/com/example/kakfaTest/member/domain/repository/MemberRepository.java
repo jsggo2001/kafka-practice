@@ -4,4 +4,6 @@ import com.example.kakfaTest.member.domain.Member;
 
 public interface MemberRepository {
     Member save(Member member);
+
+    Member findById(Long id);
 }
