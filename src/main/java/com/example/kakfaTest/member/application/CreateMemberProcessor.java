@@ -26,5 +26,4 @@ public class CreateMemberProcessor {
 
         return memberRepository.save(member);
     }
-
 }
